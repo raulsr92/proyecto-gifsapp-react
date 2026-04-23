@@ -1,15 +1,12 @@
 import { mockGifs } from "./mock-data/gifs-mock"
+import CustomHeader from "./shared/components/CustomHeader"
 
 
 const GifsApp = () => {
 
   return (
     <>
-        {/*Header*/}
-          <div className="content-center">
-              <h1>Buscador de Gifs</h1>
-              <p>Descubre y comparte el gif perfecto</p>
-          </div>
+        <CustomHeader title="Buscador de Gifs" description="Descubre y comparte el gif perfecto"/>
 
         {/*Search*/}
 
