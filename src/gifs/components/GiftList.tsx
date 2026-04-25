@@ -1,11 +1,12 @@
 
+import type { FC } from "react"
 import type { Gif } from "../../mock-data/gifs-mock"
 
 interface GiftListProps{
     gifs:Gif[]
 }
 
-const GiftList = ({gifs}:GiftListProps) => {
+const GiftList:FC<GiftListProps> = ({gifs}) => {
   return (
     <>
         {/* Gifs */}

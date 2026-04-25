@@ -13,7 +13,7 @@ const GifsApp = () => {
 
         <SearchBar placeholder="Buscar tus Gifs favoritos"/>
 
-        <PreviousSearches/>
+        <PreviousSearches searches={["Digimon", "Gokú", "Dragon Ball Z", "Ash ketchup"]}/>
 
         <GiftList gifs={mockGifs}/>
 
