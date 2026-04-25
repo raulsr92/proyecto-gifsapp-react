@@ -1,9 +1,10 @@
 
 interface PreviousSearchesProps {
-  searches: string[]
+  searches: string[],
+  onLabelClicked: (term:string)=> void
 }
 
-const PreviousSearches = ({searches}:PreviousSearchesProps) => {
+const PreviousSearches = ({searches, onLabelClicked}:PreviousSearchesProps) => {
   return (
 
     <>
@@ -15,7 +16,9 @@ const PreviousSearches = ({searches}:PreviousSearchesProps) => {
 
               {
                 searches.map((busqueda) => (
-                  <li>{busqueda}</li>
+                  <li key={busqueda} onClick={()=> onLabelClicked(busqueda)}>
+                    {busqueda}
+                  </li>
                 ))
               }
              </ul>
