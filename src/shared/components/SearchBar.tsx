@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface SearchBarProps {
   placeholder?: string;
@@ -7,10 +7,30 @@ interface SearchBarProps {
 
 const SearchBar = ({placeholder="Buscar", onQuery}:SearchBarProps) => {
 
+
+
   //Paso N° 01 Barra de búsqueda: Variable de estado
 
   const [query, setQuery]= useState('')
-  
+
+
+  //useEffect hook
+
+  useEffect( ()=>{
+
+    const timeoutId= setTimeout(()=>{
+      onQuery(query)
+    },1000)
+
+    return ()=>{
+      clearTimeout(timeoutId)
+    }
+
+  },[query, onQuery])
+
+
+//métodos
+ 
   const handleSearch = ()=>{
     //Mandamos por la prop la variable de estado
       onQuery(query)
