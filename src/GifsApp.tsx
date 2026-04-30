@@ -15,11 +15,25 @@ const GifsApp = () => {
     console.log({term})
   }
 
-  const handleSearch = (query: string) =>{
+  const handleSearch = (query: string = '') =>{
 
-    console.log({query})  
+    // 1° Limpiar de espacios vacíos al inicio y final y convertir a minusculas
+      query = query.trim().toLocaleLowerCase()
+
+    // 2° Validar que no esté vacía
+      if (query.length===0) return
+    
+    // 3° Verificar si ya existe en previousTerms
+
+      if(previousTerms.includes(query)) return
+      
+
+    // 4° Agregar nuevo término al inicio y limitar array a 8
+
+      setPreviousTerms(prev => [query,...prev].slice(0,8) )
   }
-  
+
+
   return (
     <>
         <CustomHeader title="Buscador de Gifs" description="Descubre y comparte el gif perfecto"/>
@@ -28,6 +42,7 @@ const GifsApp = () => {
 
         <PreviousSearches searches={previousTerms} onLabelClicked={handleTermClicked}/>
 
+        <p style={{color:"white"}}>{previousTerms.length}</p>
         <GiftList gifs={mockGifs}/>
 
     </>

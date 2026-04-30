@@ -11,12 +11,12 @@ const PreviousSearches = ({searches, onLabelClicked}:PreviousSearchesProps) => {
         {/*Búsquedas previas*/}
  
            <div className="previous-searches">
-             <h2>Búsquedas previas</h2>
+             <h2>Búsquedas previas </h2>
              <ul className="previous-searches-list">
 
               {
                 searches.map((busqueda) => (
-                  <li key={busqueda} onClick={()=> onLabelClicked(busqueda)}>
+                  <li  key={busqueda} onClick={()=> onLabelClicked(busqueda)}>
                     {busqueda}
                   </li>
                 ))
