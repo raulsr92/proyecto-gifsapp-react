@@ -1,11 +1,11 @@
 
 export interface GiphyResponse {
-    data:       Datum[];
+    data:       GiphyGif[];
     meta:       Meta;
     pagination: Pagination;
 }
 
-export interface Datum {
+export interface GiphyGif {
     type:                       Type;
     id:                         string;
     url:                        string;
