@@ -4,18 +4,16 @@ import SearchBar from "./shared/components/SearchBar"
 import PreviousSearches from "./gifs/components/PreviousSearches"
 import GiftList from "./gifs/components/GiftList"
 import { useState } from "react"
-
+import { getGifsByQuery } from "./gifs/actions/get-gifs-by-query.action"
 
 const GifsApp = () => {
-
   const [previousTerms, setPreviousTerms] = useState(["pokemon", "bob esponja", "chavo del 8"])
-
   const handleTermClicked = (term: string) =>{
 
     console.log({term})
   }
 
-  const handleSearch = (query: string = '') =>{
+  const handleSearch = async(query: string = '') =>{
 
     // 1° Limpiar de espacios vacíos al inicio y final y convertir a minusculas
       query = query.trim().toLocaleLowerCase()
@@ -31,6 +29,11 @@ const GifsApp = () => {
     // 4° Agregar nuevo término al inicio y limitar array a 8
 
       setPreviousTerms(prev => [query,...prev].slice(0,8) )
+
+      const gifs = await getGifsByQuery(query)
+
+      return gifs
+  
   }
 
 
