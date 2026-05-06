@@ -9,7 +9,7 @@ import type { Gif } from "./gifs/interfaces/gif.interface"
 
 const GifsApp = () => {
 
-  const [previousTerms, setPreviousTerms] = useState(["pokemon", "bob esponja", "chavo del 8"])
+  const [previousTerms, setPreviousTerms] = useState<string[]>([])
 
   const [arrayGifs, setArrayGifs] = useState<Gif[]>([])
 
