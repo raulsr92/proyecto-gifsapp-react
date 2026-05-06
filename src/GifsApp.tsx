@@ -32,6 +32,7 @@ const GifsApp = () => {
 
       const gifs = await getGifsByQuery(query)
 
+      console.log(gifs)
       return gifs
   
   }
