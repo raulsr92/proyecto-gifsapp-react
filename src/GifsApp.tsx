@@ -3,49 +3,13 @@ import CustomHeader from "./shared/components/CustomHeader"
 import SearchBar from "./shared/components/SearchBar"
 import PreviousSearches from "./gifs/components/PreviousSearches"
 import GiftList from "./gifs/components/GiftList"
-import { useState } from "react"
-import { getGifsByQuery } from "./gifs/actions/get-gifs-by-query.action"
-import type { Gif } from "./gifs/interfaces/gif.interface"
+import useGifs from "./gifs/hooks/useGifs"
 
 const GifsApp = () => {
 
-  const [previousTerms, setPreviousTerms] = useState<string[]>([])
+  //Llamada a customHook
 
-  const [arrayGifs, setArrayGifs] = useState<Gif[]>([])
-
-
-  const handleTermClicked = (term: string) =>{
-
-    console.log({term})
-  }
-
-  const handleSearch = async(query: string = '') =>{
-
-    // 1° Limpiar de espacios vacíos al inicio y final y convertir a minusculas
-      query = query.trim().toLocaleLowerCase()
-
-    // 2° Validar que no esté vacía
-      if (query.length===0) return
-    
-    // 3° Verificar si ya existe en previousTerms
-
-      if(previousTerms.includes(query)) return
-      
-
-    // 4° Agregar nuevo término al inicio y limitar array a 8
-
-      setPreviousTerms(prev => [query,...prev].slice(0,8) )
-
-      const gifs = await getGifsByQuery(query)
-
-      console.log(gifs)
-
-      setArrayGifs(gifs)
-
-      //return gifs
-
-  }
-
+  const {previousTerms,arrayGifs,handleTermClicked,handleSearch} = useGifs();
 
   return (
     <>
