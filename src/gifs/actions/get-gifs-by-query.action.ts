@@ -16,6 +16,8 @@ export const getGifsByQuery = async(query:string):Promise<Gif[]> =>{
 
     console.log(response.data)
 
+    console.log("hemos hecho una petición http GET")
+    
     return response.data.data.map(({id,title,images})=> (
         {
             ["id"]:id,

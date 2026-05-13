@@ -19,7 +19,6 @@ const GifsApp = () => {
 
         <PreviousSearches searches={previousTerms} onLabelClicked={handleTermClicked}/>
 
-        <p style={{color:"white"}}>{previousTerms.length}</p>
         <GiftList gifs={arrayGifs}/>
 
     </>
