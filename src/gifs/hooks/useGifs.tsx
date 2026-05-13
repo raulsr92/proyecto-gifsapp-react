@@ -1,16 +1,16 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import type { Gif } from "../interfaces/gif.interface"
 import { getGifsByQuery } from "../actions/get-gifs-by-query.action"
 
 
 //Almacenamiento de resultados atneriores
 
-const gifsCache:Record<string, Gif[]> = {}
-
 const useGifs = () => {
 
     const [previousTerms, setPreviousTerms] = useState<string[]>([])
     const [arrayGifs, setArrayGifs] = useState<Gif[]>([])
+
+    const gifsCache = useRef<Record<string, Gif[]>>({})
 
    //Métodos
    
@@ -22,14 +22,13 @@ const useGifs = () => {
         */
             console.log(term)
 
-            if (gifsCache[term]) {
-              setArrayGifs(gifsCache[term])
+            if (gifsCache.current[term]) {
+              setArrayGifs(gifsCache.current[term])
               return
             }
 
             const gifs = await getGifsByQuery(term)
             setArrayGifs(gifs)
-
       }
 
 
@@ -58,7 +57,7 @@ const useGifs = () => {
 
           // 5° Llenar el objeto cache con la búsqueda reciente
 
-            gifsCache[query] = gifs
+            gifsCache.current[query] = gifs
             console.log(gifsCache)
 
       }   
