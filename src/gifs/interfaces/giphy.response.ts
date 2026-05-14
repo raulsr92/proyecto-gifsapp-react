@@ -96,14 +96,8 @@ export interface FixedHeight {
     hash?:     string;
 }
 
-export enum Rating {
-    G = "g",
-    R = "r",
-}
-
-export enum Type {
-    GIF = "gif",
-}
+export type Rating = "g" | "r"
+export type Type = "gif"
 
 export interface User {
     avatar_url:    string;
