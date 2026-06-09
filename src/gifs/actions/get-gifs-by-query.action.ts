@@ -5,7 +5,7 @@ import { giphyApi } from "../api/giphy.api"
 
 export const getGifsByQuery = async(query:string):Promise<Gif[]> =>{
 
-    const response = await giphyApi<GiphyResponse>(`/search`,
+      const response = await giphyApi<GiphyResponse>(`/search`,
         {
             params:{
                 q: query,
