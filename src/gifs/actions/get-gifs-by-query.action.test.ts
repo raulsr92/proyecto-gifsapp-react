@@ -1,4 +1,4 @@
-import {  beforeEach, describe, expect, test } from 'vitest';
+import {  beforeEach, describe, expect, test, vi } from 'vitest';
 import AxiosMockAdapter from 'axios-mock-adapter'
 
 import { getGifsByQuery } from './get-gifs-by-query.action';
@@ -73,6 +73,10 @@ describe('getGifsByQuery', ()=>{
 
     test('should handle error when the API return an error', async ()=>{
 
+        //Implementar espía
+
+        const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(()=>{console.log("Aqui va el error")})
+
         //Implementar mock
             mock.onGet('/search').reply(400,{
                 data:{
@@ -87,6 +91,10 @@ describe('getGifsByQuery', ()=>{
         // Expects
 
             expect(gifs.length).toBe(0)
+            expect(consoleErrorSpy).toHaveBeenCalled()
+            //Que sea llamado el console.error con algun error 
+
+            expect(consoleErrorSpy).toHaveBeenCalledWith(expect.anything())
 
         
     })
