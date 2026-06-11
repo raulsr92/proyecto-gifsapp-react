@@ -5,26 +5,45 @@ import { giphyApi } from "../api/giphy.api"
 
 export const getGifsByQuery = async(query:string):Promise<Gif[]> =>{
 
-      const response = await giphyApi<GiphyResponse>(`/search`,
-        {
-            params:{
-                q: query,
-                limit: 10,        
-            }
-         }
-    )
-
-    console.log(response.data)
-    console.log("hemos hecho una petición http GET")
-    
-    return response.data.data.map(({id,title,images})=> (
-        {
-            ["id"]:id,
-            ["title"]:title,
-            ["url"]:images.original.url,
-            ["width"]:parseInt(images.original.width),
-            ["height"]:parseInt(images.original.height)
+    //Si query está vacío 
+        if (query.trim().length==0) {
+            return [];
         }
-    ))
+    
+    //Try catch
+
+    try {
+
+        const response = await giphyApi<GiphyResponse>(`/search`,
+            {
+                params:{
+                    q: query,
+                    limit: 10,        
+                }
+            }
+        )
+
+        console.log(response.data)
+        console.log("hemos hecho una petición http GET")
+        
+        return response.data.data.map(({id,title,images})=> (
+            {
+                ["id"]:id,
+                ["title"]:title,
+                ["url"]:images.original.url,
+                ["width"]:parseInt(images.original.width),
+                ["height"]:parseInt(images.original.height)
+            }
+        ))        
+        
+    } catch (error) {
+
+        console.error(error)
+        return [];
+        
+    }
+
+
+
     
 }
