@@ -2,7 +2,6 @@ import { useRef, useState } from "react"
 import type { Gif } from "../interfaces/gif.interface"
 import { getGifsByQuery } from "../actions/get-gifs-by-query.action"
 
-
 //Almacenamiento de resultados atneriores
 
 const useGifs = () => {
