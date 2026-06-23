@@ -20,7 +20,7 @@ const useGifs = () => {
             setArrayGifs(gifs)
         */
             console.log(term)
-
+        //Si ya existe el término en el objeto gifsCache, regresamos los gifs del caché y no de la petición
             if (gifsCache.current[term]) {
               setArrayGifs(gifsCache.current[term])
               return
@@ -28,11 +28,14 @@ const useGifs = () => {
 
             const gifs = await getGifsByQuery(term)
             setArrayGifs(gifs)
+
+            // Llenar el objeto cache con la búsqueda reciente
+            gifsCache.current[term] = gifs
+            
       }
 
 
       const handleSearch = async(query: string = '') =>{
-
           // 1° Limpiar de espacios vacíos al inicio y final y convertir a minusculas
           query = query.trim().toLocaleLowerCase()
 
@@ -47,15 +50,12 @@ const useGifs = () => {
           setPreviousTerms(prev => [query,...prev].slice(0,8) )
 
           const gifs = await getGifsByQuery(query)
-
           console.log(gifs)
-
           setArrayGifs(gifs)
 
           //return gifs
 
           // 5° Llenar el objeto cache con la búsqueda reciente
-
             gifsCache.current[query] = gifs
             console.log(gifsCache)
 
