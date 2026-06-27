@@ -7,20 +7,16 @@ interface SearchBarProps {
 
 const SearchBar = ({placeholder="Buscar", onQuery}:SearchBarProps) => {
 
-
-
   //Paso N° 01 Barra de búsqueda: Variable de estado
 
   const [query, setQuery]= useState('')
 
-
   //useEffect hook
-
   useEffect( ()=>{
 
     const timeoutId= setTimeout(()=>{
       onQuery(query)
-    },1000)
+    },700)
 
     return ()=>{
       clearTimeout(timeoutId)
@@ -28,9 +24,7 @@ const SearchBar = ({placeholder="Buscar", onQuery}:SearchBarProps) => {
 
   },[query, onQuery])
 
-
 //métodos
- 
   const handleSearch = ()=>{
     //Mandamos por la prop la variable de estado
       onQuery(query)
@@ -38,7 +32,6 @@ const SearchBar = ({placeholder="Buscar", onQuery}:SearchBarProps) => {
     //Limpiamos la caja de texto
       setQuery('')
   }
-
   const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
       if (e.key==="Enter") {
         handleSearch()

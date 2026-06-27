@@ -103,63 +103,63 @@ describe('useGifs',()=>{
             await act(async()=>{
                 await result.current.handleSearch("pikachu");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+            //console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //3° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (2er llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("goku");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+            //console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //4° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (3er llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("krillin");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+            //console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //5° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (4to llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("feliz");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+           // console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //6° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (5to llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("sad");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+            //console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //7° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (6to llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("hungry");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+            //console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //8° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (7mo llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("chavo del 8");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+            //console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //9° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (8vo llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("bob");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+           // console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
 
         //10° Actualizar el valor de la variable de estado previousTerms llamando a una búsqueda (9no llamado)
 
             await act(async()=>{
                 await result.current.handleSearch("futbol");
             })
-            console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
+            //console.log("N° Búsquedas previas: "+result.current.previousTerms.length)
         
             expect(result.current.previousTerms.length).toBeLessThan(9)
     })
@@ -186,7 +186,7 @@ describe('useGifs',()=>{
                     await result.current.handleSearch("goku9");
             })
 
-            console.log(result.current.previousTerms)
+           // console.log(result.current.previousTerms)
 
         //4° Expectativa
 

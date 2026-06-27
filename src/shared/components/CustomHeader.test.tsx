@@ -11,7 +11,7 @@ describe('CustomHeader', ()=>{
 
         render(<CustomHeader title={title}/>)
 
-        screen.debug()
+        //screen.debug()
 
         expect(screen.getByText(title)).toBeDefined()
 

@@ -50,14 +50,14 @@ const useGifs = () => {
           setPreviousTerms(prev => [query,...prev].slice(0,8) )
 
           const gifs = await getGifsByQuery(query)
-          console.log(gifs)
+          //console.log(gifs)
           setArrayGifs(gifs)
 
           //return gifs
 
           // 5° Llenar el objeto cache con la búsqueda reciente
             gifsCache.current[query] = gifs
-            console.log(gifsCache)
+            //console.log(gifsCache)
 
       }   
 
